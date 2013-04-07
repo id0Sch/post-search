@@ -1,0 +1,14 @@
+{
+    "name": "Shut Up, Guy",
+    "version": "1.0",
+    "description": "ignore that dumbass who went to your highschool",
+    "content_scripts": [{
+        "matches": ["*://*.facebook.com/*"],
+        "css": ["shutupguy.css"],
+        "js": ["jquery-1.9.0.min.js", "shutupguy.js"]
+    }],
+    "options_page": "options.html",
+    "permissions": [],
+    "manifest_version": 2
+}
+
