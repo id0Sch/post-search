@@ -1,26 +1,29 @@
-var storageToken = "shutupguy_blacklist";
 function save() {
     var blacklist = document.getElementById("blacklist").value;
-    localStorage[storageToken] = blacklist;
+    status.innerHTML = "Saving...";
+    chrome.storage.sync.set({"shutupguy_blacklist": blacklist}, function() {
 
-    var status = document.getElementById("status");
-    status.innerHTML = "Options Saved.";
-    setTimeout(function() {
-        status.innerHTML = "";
-    }, 750);
+        var status = document.getElementById("status");
+        status.innerHTML = "Options Saved.";
+        setTimeout(function() {
+            status.innerHTML = "";
+        }, 750);
+    });
 }
 
 function restore() {
-    var blacklist = localStorage[storageToken];
-    if (!blacklist) {
-        blacklist = initializeBlacklist();
-    }
-    document.getElementById("blacklist").value = blacklist;
+    chrome.storage.sync.get("shutupguy_blacklist", function(response) {
+        var blacklist = response["shutupguy_blacklist"];
+        if (!blacklist) {
+            blacklist = getSampleBlacklist();
+        }
+        document.getElementById("blacklist").value = blacklist;
+    });
 }
 
-function initializeBlacklist() {
+function getSampleBlacklist() {
     var sampleBlacklist = [
-       "Obama",
+       "Obamacare",
        "kardashian",
        "tardis" 
     ];
@@ -31,3 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
     restore();    
     document.getElementById("save").addEventListener('click', save);
 });
+
+
+

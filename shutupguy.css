@@ -1,1 +1,14 @@
-.foo { }
+.shutupguy, .shutupguy :not(.highlightSelectorButton) {
+    background-color: #333333 !important;
+    background-image: none !important;
+    color: #333333 !important;
+    border: 0 none !important;
+}
+
+.shutupguy .actorName * {
+    background-color: white !important;
+}
+
+.shutupguy img:not(.profilePic) {
+    display: none !important;
+}
