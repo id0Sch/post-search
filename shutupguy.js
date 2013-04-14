@@ -1,12 +1,34 @@
+var lock = false; // so we don't trigger shutUp() as we manipulate the dom in shutUp()
 var shutUp = function(regex) {
+    if (lock) {
+        return;
+    }
+    lock = true;
     $(".userContent:not(.shutupguy), .userContentWrapper:not(.shutupguy)")
         .filter(function() { 
-            return regex.test(this.textContent); 
+            if ($(this).closest(".uiUnifiedStory.shutupguy").length > 0) {
+                return false; // don't add stuff more than once per story 
+            }
+            var matches = regex.exec(this.textContent);
+            if (matches !== null) {
+                var matchingString = matches.join(", ");
+                var story = $(this).closest(".uiUnifiedStory");
+                story.addClass("shutupguy");
+
+                // insert the list of matched words
+                var div = $("<div></div>")
+                    .addClass("shutupguy_matches")
+                    .attr("style", "background-color: white !important") // ugh sorry
+                    .text(matchingString);
+                div.appendTo($(this));
+                div.css("top", story.height() / 2.0);
+                
+                return true; 
+            }
+            return false;
         })
-        .parents(".uiUnifiedStory")
-        .addClass("shutupguy")
-        .children(".userContent, .userContentWrapper")
         .addClass("shutupguy");
+    lock = false;
 }
 
 function makeRegex(blacklist) {
@@ -33,6 +55,8 @@ chrome.storage.sync.get("shutupguy_blacklist", function(response) {
     } else {
         var regex = makeRegex(blacklist);
         document.addEventListener("DOMNodeInserted", function() {
+            // this runs pretty slow-- it'd be better to hook into whatever event Facebook
+            // uses to trigger loading additional content, I think.
             shutUp(regex);    
         });
         shutUp(regex);

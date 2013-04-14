@@ -1,3 +1,16 @@
+div.shutupguy_matches {
+    position: absolute;
+    right: 50%;
+    z-index: 1;
+    padding: 3px;
+    text-transform: uppercase;
+}
+
+.shutupguy .actorDescription.actorName * {
+    background-color: white !important;
+    padding: 3px;
+}
+
 .shutupguy, .shutupguy :not(.highlightSelectorButton) {
     background-color: #333333 !important;
     background-image: none !important;
@@ -5,10 +18,7 @@
     border: 0 none !important;
 }
 
-.shutupguy .actorName * {
-    background-color: white !important;
-}
-
 .shutupguy img:not(.profilePic) {
     display: none !important;
 }
+
