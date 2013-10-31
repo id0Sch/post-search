@@ -4,24 +4,25 @@ var shutUp = function(regex) {
         return;
     }
     lock = true;
-    $(".userContent:not(.shutupguy), .userContentWrapper:not(.shutupguy)")
+    jQuery(".uiUnifiedStory:not(.shutupguy)")
         .filter(function() { 
-            if ($(this).closest(".uiUnifiedStory.shutupguy").length > 0) {
+            if (jQuery(this).closest(".uiUnifiedStory.shutupguy").length > 0) {
                 return false; // don't add stuff more than once per story 
             }
             var matches = regex.exec(this.textContent);
             if (matches !== null) {
                 var matchingString = matches.join(", ");
-                var story = $(this).closest(".uiUnifiedStory");
+                var story = jQuery(this);/* .closest(".uiUnifiedStory"); */
                 story.addClass("shutupguy");
 
                 // insert the list of matched words
-                var div = $("<div></div>")
+                var div = jQuery("<div></div>")
                     .addClass("shutupguy_matches")
                     .attr("style", "background-color: white !important") // ugh sorry
                     .text(matchingString);
-                div.appendTo($(this));
-                div.css("top", story.height() / 2.0);
+                div.appendTo(jQuery(this));
+                div.css("top", -1 * story.outerHeight() / 2.0);
+                div.css("left", (story.outerWidth() / 2.0) - div.width());
                 
                 return true; 
             }
@@ -44,7 +45,6 @@ function escape(str) {
 } 
 
 chrome.storage.sync.get("shutupguy_blacklist", function(response) {
-    console.log(response);
     var blacklist = response["shutupguy_blacklist"];
     if (!blacklist) {
         if (window.confirm("'Shut Up, Guy' won't do anything unless you " +

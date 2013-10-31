@@ -1,6 +1,6 @@
 {
     "name": "Shut Up, Guy",
-    "version": "1.0",
+    "version": "1.1",
     "description": "ignore that dumbass who went to your highschool",
     "content_scripts": [{
         "matches": ["*://*.facebook.com/*"],
