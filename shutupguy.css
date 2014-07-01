@@ -13,16 +13,13 @@ div.shutupguy_matches {
     border: 0 none !important;
 }
 
-.shutupguy img:not(.profilePic) {
+.shutupguy img {
     display: none !important;
 }
 
-.shutupguy .actorName, .shutupguy .passiveName {
+.shutupguy .fwb a[data-hovercard] {
     padding: 3px;
     display: inline-block;
-}
-
-.shutupguy .actorName, .shutupguy .actorName *, .shutupguy .passiveName, .shutupguy .passiveName * {
     background-color: white !important;
 }
 
