@@ -1,19 +1,19 @@
 function save() {
     var blacklist = document.getElementById("blacklist").value;
     status.innerHTML = "Saving...";
-    chrome.storage.sync.set({"shutupguy_blacklist": blacklist}, function() {
+    chrome.storage.sync.set({"filtered_post_blacklist": blacklist}, function() {
 
         var status = document.getElementById("status");
         status.innerHTML = "Options Saved.";
-        setTimeout(function() {
+        setTimeout(function() { 
             status.innerHTML = "";
         }, 750);
     });
 }
 
 function restore() {
-    chrome.storage.sync.get("shutupguy_blacklist", function(response) {
-        var blacklist = response["shutupguy_blacklist"];
+    chrome.storage.sync.get("filtered_post_blacklist", function(response) {
+        var blacklist = response["filtered_post_blacklist"];
         if (!blacklist) {
             blacklist = getSampleBlacklist();
         }

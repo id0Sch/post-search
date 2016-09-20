@@ -1,0 +1,45 @@
+div.filtered_post_matches {
+    position: relative;
+    z-index: 1;
+    padding: 3px;
+    display: inline-block;
+    background-color: white;
+}
+
+span.matches_text {
+    color: #365899;
+    text-decoration: none;
+}
+
+
+/*.filtered_post, .filtered_post :not(.highlightSelectorButton) {
+    background-color: #333333 !important;
+    background-image: none !important;
+    color: #333333 !important;
+    border: 0 none !important;
+}
+
+.filtered_post img {
+    display: none !important;
+}
+
+.filtered_post .fwb a[data-hovercard] {
+    padding: 3px;
+    display: inline-block;
+    background-color: white !important;
+}
+
+*/
+
+div.filtered_post {
+    display: none;
+    /*background-color: red !important;*/
+}
+
+div.filtered_post_view {
+    display: block !important;
+}
+
+ul.filtered_post_submenu {
+    /*background-color: red!important;*/
+}
