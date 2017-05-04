@@ -1,12 +1,3 @@
-Shut Up, Guy
-============
-
-Rob (who went to highschool in Macon) told me he wished he had a way to block all Facebook posts that contained the word "liberal", so that he could automatically hide lots of vague, ill-informed posts by old acquaintances without de-friending these people.
-
-So I implemented it!
-
-"Shut Up, Guy" is a Chrome extension that will black out Facebook posts containing one or more user-provided forbidden words. Keep your tenuous friendship intact while hiding all mentions of "Obamaphones"! It's a win-win!
-
 
 _To install:_ 
 
@@ -32,4 +23,3 @@ _To configure and use:_
 - Remember, these words must *exactly* match words in a Facebook post for the post to be blocked, so make sure you haven't made any typos!
 - Click "Save". Your changes will be applied when you reload Facebook.
 
-If you forget to configure the list of forbidden words, "Shut Up, Guy" will prompt you each time you visit Facebook until it has been configured. Yes, this *is* annoying.
